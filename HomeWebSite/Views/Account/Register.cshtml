@@ -1,0 +1,55 @@
+﻿@model HomeWebSite.Models.RegisterViewModel
+<div id="main" class="wrapper style1">
+    <div class="myclass container small">
+        <div class="container xsmall">
+            <!-- Content -->
+            <section id="content">
+                <h2>Реєстрація</h2>
+                <form method="post" asp-controller="Account" asp-action="Register">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div>
+                        <label asp-for="Login"></label><br />
+                        <input asp-for="Login" />
+                        <span asp-validation-for="Login"></span><br />
+                    </div>
+                    <div>
+                        <label asp-for="Password"></label><br />
+                        <input asp-for="Password" />
+                        <span asp-validation-for="Password"></span><br />
+                    </div>
+                    <div>
+                        <label asp-for="PasswordConfirm"></label><br />
+                        <input asp-for="PasswordConfirm" />
+                        <span asp-validation-for="PasswordConfirm"></span><br />
+                    </div>
+                    <div>
+                        <label asp-for="Name"></label><br />
+                        <input asp-for="Name" />
+                        <span asp-validation-for="Name"></span><br />
+                    </div>
+                    <div>
+                        <label asp-for="MiddleName"></label><br />
+                        <input asp-for="MiddleName" />
+                        <span asp-validation-for="MiddleName"></span><br />
+                    </div>
+                    <div>
+                        <label asp-for="Email"></label><br />
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email"></span><br />
+                    </div>
+                    <div>
+                        <label asp-for="Phone"></label><br />
+                        <input asp-for="Phone" />
+                        <span asp-validation-for="Phone"></span><br />
+                    </div>
+                    <input type="submit" value="Зареєструватись" />
+                </form>
+            </section>
+            <div>
+                <p>У мене є акаунт! <a asp-controller="Account" asp-action="Login">Увійти</a></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+

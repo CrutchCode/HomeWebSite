@@ -1,0 +1,47 @@
+﻿@model HomeWebSite.Models.LoginViewModel
+
+<div id="main" class="wrapper style1">
+    @*<hr />*@
+    <div class="myclass container small">
+        <div class="container xsmall">
+            <!-- Content -->
+            <section id="content">
+                <h2>Вхід у акаунт</h2>
+                <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div>
+                        <label asp-for="Login"></label><br />
+                        <input asp-for="Login" />
+                        <span asp-validation-for="Login"></span><br />
+                    </div>
+                    <div>
+                        <label asp-for="Password"></label><br />
+                        <input asp-for="Password" />
+                        <span asp-validation-for="Password"></span><br />
+                    </div>
+                    <div>
+                        <input asp-for="IsRememberMe" />
+                        <label asp-for="IsRememberMe"></label><br />
+                    </div>
+                    <br />
+                    <div>
+                        <input type="submit" value="Увійти" />
+                    </div>
+                </form>
+            </section>
+        </div>
+        <div class="align-center">
+            <p>Я тут новенький! Мені потрібний акаунт <a asp-controller="Account" asp-action="Register">Зареєструватись</a></p>
+        </div>
+    </div>
+
+    @*<hr />*@
+</div>
+
+
+@*<div class="row gtr-uniform gtr-50">
+        <div class="col-6 col-12">
+
+        </div>
+
+    </div>*@
