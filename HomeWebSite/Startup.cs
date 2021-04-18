@@ -31,8 +31,16 @@ namespace HomeWebSite
             services.AddDbContext<HomeWebSiteContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<HomeWebSiteContext>();
+            services.AddIdentity<User, IdentityRole>(options => 
+            {
+                options.Password.RequiredLength = 4;   
+                options.Password.RequireNonAlphanumeric = false;   
+                options.Password.RequireLowercase = true; 
+                options.Password.RequireUppercase = false; 
+                options.Password.RequireDigit = true;
+
+                //options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<HomeWebSiteContext>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

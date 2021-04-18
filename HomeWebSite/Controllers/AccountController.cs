@@ -73,8 +73,8 @@ namespace HomeWebSite.Controllers
             {
                 var user = new User
                 {
-                    Login = model.Login,
                     UserName = model.Name,
+                    Login = model.Login,
                     MiddleName = model.MiddleName,
                     Email = model.Email,
                     PhoneNumber = model.Phone
