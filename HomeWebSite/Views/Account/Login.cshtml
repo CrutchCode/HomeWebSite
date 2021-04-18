@@ -1,14 +1,15 @@
 ﻿@model HomeWebSite.Models.LoginViewModel
 
 <div id="main" class="wrapper style1">
-    @*<hr />*@
     <div class="myclass container small">
+        <div class="align-center">
+            <h2>Вхід у акаунт</h2>
+            <hr />
+        </div>
         <div class="container xsmall">
             <!-- Content -->
-            <section id="content">
-                <h2>Вхід у акаунт</h2>
+            <section id="content">                
                 <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
-                    <div asp-validation-summary="ModelOnly"></div>
                     <div>
                         <label asp-for="Login"></label><br />
                         <input asp-for="Login" />
@@ -24,6 +25,8 @@
                         <label asp-for="IsRememberMe"></label><br />
                     </div>
                     <br />
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <br />
                     <div>
                         <input type="submit" value="Увійти" />
                     </div>
@@ -34,8 +37,6 @@
             <p>Я тут новенький! Мені потрібний акаунт <a asp-controller="Account" asp-action="Register">Зареєструватись</a></p>
         </div>
     </div>
-
-    @*<hr />*@
 </div>
 
 

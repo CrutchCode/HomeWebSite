@@ -8,12 +8,14 @@ namespace HomeWebSite.Models
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Не вказаний логін")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Довжина рядка повинна бути від 3 до 30 символів")]
         [Display(Name = "Введіть логін")]
         public string Login { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Не вказаний пароль")]
         [DataType(DataType.Password)]
+        [StringLength(16, MinimumLength = 4, ErrorMessage = "Довжина пароля повинна бути від 4 до 16 символів")]
         [Display(Name = "Введіть пароль")]
         public string Password { get; set; }
 

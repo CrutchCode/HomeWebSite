@@ -1,12 +1,14 @@
 ﻿@model HomeWebSite.Models.RegisterViewModel
 <div id="main" class="wrapper style1">
     <div class="myclass container small">
+        <div class="align-center">
+            <h2>Сторінка для реєстрації</h2>
+            <hr />
+        </div>
         <div class="container xsmall">
             <!-- Content -->
             <section id="content">
-                <h2>Реєстрація</h2>
                 <form method="post" asp-controller="Account" asp-action="Register">
-                    <div asp-validation-summary="ModelOnly"></div>
                     <div>
                         <label asp-for="Login"></label><br />
                         <input asp-for="Name" />
@@ -42,6 +44,8 @@
                         <input asp-for="Phone" />
                         <span asp-validation-for="Phone"></span><br />
                     </div>
+                    <br />
+                    <div asp-validation-summary="ModelOnly"></div>
                     <input type="submit" value="Зареєструватись" />
                 </form>
             </section>
