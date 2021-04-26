@@ -21,7 +21,6 @@ namespace HomeWebSite
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            //Configuration = new ConfigurationBuilder().AddJsonFile("ConfigSettings.json").Build();
         }
         public IConfiguration Configuration { get; }
 
@@ -35,7 +34,6 @@ namespace HomeWebSite
                 options.Password = OptionsUserPassword.CreateOptionsPassword();
                 //options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<HomeWebSiteContext>();
-
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
