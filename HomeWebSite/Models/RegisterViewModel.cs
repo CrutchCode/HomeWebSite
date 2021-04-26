@@ -8,42 +8,42 @@ namespace HomeWebSite.Models
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Не введене ім'я!")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Довжина рядка повинна бути від 3 до 30 символів")]
-        [Display(Name = "Введіть логін")]
+        [Required(ErrorMessage = "No name entered!")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Line length must be between 3 and 30 characters")]
+        [Display(Name = "Enter your login")]
         public string Login { get; set; }
 
-        [Required(ErrorMessage = "Не вказаний пароль!")]
+        [Required(ErrorMessage = "No password specified!")]
         [DataType(DataType.Password)]
-        [StringLength(16, MinimumLength = 4, ErrorMessage = "Довжина пароля повинна бути від 4 до 16 символів")]
-        [Display(Name = "Введіть пароль")]
+        [StringLength(16, MinimumLength = 4, ErrorMessage = "The password must be between 4 and 16 characters")]
+        [Display(Name = "Enter the password")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Не підтверджений пароль!")]
-        [Compare("Password", ErrorMessage = "Паролі не співпадають!")]
+        [Required(ErrorMessage = "Password not confirmed!")]
+        [Compare("Password", ErrorMessage = "Passwords do not match!")]
         [DataType(DataType.Password)]
-        [StringLength(16, MinimumLength = 4, ErrorMessage = "Довжина пароля повинна бути від 4 до 16 символів")]
-        [Display(Name = "Підтвердіть пароль")]
+        [StringLength(16, MinimumLength = 4, ErrorMessage = "The password must be between 4 and 16 characters")]
+        [Display(Name = "Confirm password")]
         public string PasswordConfirm { get; set; }
 
-        [Required(ErrorMessage = "Не вказаний логін!")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Довжина рядка повинна бути від 3 до 30 символів")]
-        [Display(Name = "Введіть ім'я")]
+        [Required(ErrorMessage = "No login specified!")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Line length must be between 3 and 30 characters")]
+        [Display(Name = "Enter a name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Не введена фамілія!")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Довжина рядка повинна бути від 3 до 30 символів")]
-        [Display(Name = "Введіть фамілію")]
+        [Required(ErrorMessage = "Middle name not entered!")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Line length must be between 3 and 30 characters")]
+        [Display(Name = "Enter Middle name")]
         public string MiddleName { get; set; }
 
-        [Required(ErrorMessage = "Не введена електронна пошта!")]
-        [EmailAddress(ErrorMessage = "Некоректна поштова адреса")]
-        [Display(Name = "Введіть електронну пошту")]
+        [Required(ErrorMessage = "Email not entered!")]
+        [EmailAddress(ErrorMessage = "Invalid mailing address")]
+        [Display(Name = "Enter your email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Не введений номер телефону!")]
+        [Required(ErrorMessage = "No phone number entered!")]
         //[Phone(ErrorMessage ="Некоректний номер телефону")]
-        [Display(Name = "Введіть номер телефону")]
+        [Display(Name = "Enter the phone number")]
         public string Phone { get; set; }
     }
 }

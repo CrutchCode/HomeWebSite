@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace HomeWebSite.Controllers
 {
@@ -24,6 +25,7 @@ namespace HomeWebSite.Controllers
         {
             return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -38,14 +40,11 @@ namespace HomeWebSite.Controllers
                     {
                         return Redirect(model.ReturnUrl);
                     }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Неправильний логін і/або пароль");
+                    ModelState.AddModelError("", "Invalid login and / or password");
                 }
             }
             return View(model);
@@ -66,6 +65,7 @@ namespace HomeWebSite.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {

@@ -1,0 +1,7 @@
+{
+  "RequiredLength": "4",
+  "RequireNonAlphanumeric": "false",
+  "RequireLowercase": "true",
+  "RequireUppercase": "false",
+  "RequireDigit": "true"
+}

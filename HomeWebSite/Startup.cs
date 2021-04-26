@@ -1,4 +1,3 @@
-using HomeWebSite.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using HomeWebSite.Models;
+using HomeWebSite.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,24 +21,18 @@ namespace HomeWebSite
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            //Configuration = new ConfigurationBuilder().AddJsonFile("ConfigSettings.json").Build();
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HomeWebSiteContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<User, IdentityRole>(options => 
             {
-                options.Password.RequiredLength = 4;   
-                options.Password.RequireNonAlphanumeric = false;   
-                options.Password.RequireLowercase = true; 
-                options.Password.RequireUppercase = false; 
-                options.Password.RequireDigit = true;
-
+                options.Password = OptionsUserPassword.CreateOptionsPassword();
                 //options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<HomeWebSiteContext>();
 
