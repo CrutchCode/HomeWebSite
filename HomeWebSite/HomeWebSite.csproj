@@ -11,12 +11,28 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HomeWebSiteDb\HomeWebSiteDb.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="ConfigSettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\AdminPanel\Admin.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\AdminControl\Controllers\" />
+    <Folder Include="Areas\AdminControl\Data\" />
+    <Folder Include="Areas\AdminControl\Models\" />
+    <Folder Include="Areas\AdminControl\Views\" />
   </ItemGroup>
 
 </Project>

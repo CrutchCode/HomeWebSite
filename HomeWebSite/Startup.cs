@@ -7,8 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using HomeWebSite.Models;
 using HomeWebSite.Options;
+using HomeWebSiteDb;
+using HomeWebSiteDb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +28,14 @@ namespace HomeWebSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<HomeWebSiteContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<HomeWebSiteDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                x => x.MigrationsAssembly("HomeWebSiteDb")));
             services.AddIdentity<User, IdentityRole>(options => 
             {
                 options.Password = OptionsUserPassword.CreateOptionsPassword();
                 //options.User.RequireUniqueEmail = true;
-            }).AddEntityFrameworkStores<HomeWebSiteContext>();
+            }).AddEntityFrameworkStores<HomeWebSiteDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -62,6 +64,9 @@ namespace HomeWebSite
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    name:"areas",
+                //    pattern:"{area:exist}/{controller=AdminPanel}/{action=Admin}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

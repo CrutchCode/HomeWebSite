@@ -1,11 +1,13 @@
 ﻿using HomeWebSite.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using HomeWebSiteDb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using HomeWebSite.Models.AccountModels;
 
 namespace HomeWebSite.Controllers
 {
@@ -36,10 +38,16 @@ namespace HomeWebSite.Controllers
 
                 if (userResult.Succeeded)
                 {
+                    if (model.Login == "Admin" && model.Password == "admin1")
+                    {
+                        return RedirectToAction("Admin", "AdminPanel");
+                    }
+
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
                         return Redirect(model.ReturnUrl);
                     }
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
